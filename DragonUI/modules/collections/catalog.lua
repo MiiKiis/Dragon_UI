@@ -55,13 +55,6 @@ mergeSource(addon.BaseCatalog)
 mergeSource(addon.ClientCatalog)
 mergeSource(addon.RealmCatalog)
 
-local textureModels = {}
-if type(addon.TextureModels) == "table" then
-    for displayID, path in pairs(addon.TextureModels) do
-        if validID(displayID) then textureModels[displayID] = cleanModel(path) end
-    end
-end
-
 function catalog.Stop(model)
     local timer = model._mountPreviewTimer
     if timer then
@@ -84,8 +77,6 @@ function catalog.Show(model, entry, callback)
     end
     add("SetDisplayInfo", entry.displayID)
     add("SetCreature", entry.creatureID)
-    add("SetModel", textureModels[entry.displayID])
-    add("SetModel", entry.model)
 
     local attempt, remaining = 0, 0
     local function tryNext()

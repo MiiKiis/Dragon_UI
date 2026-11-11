@@ -18,7 +18,7 @@ Con Node.js 20 o superior, usa `DragonUI/tools/catalog.mjs` para generar un cat�
 node DragonUI/tools/catalog.mjs sync --url https://tu-reino.example/mounts.json --addon DragonUI
 ```
 
-El comando actualiza `DragonUI/modules/collections/RealmCatalog.lua`. DragonUI valida los datos al cargarlos y usa el catálogo local al iniciar o al ejecutar `/reload`. Las monturas custom requieren los modelos y las texturas en el cliente. Cuando el cliente carga solo el modelo base, la textura puede variar.
+El comando actualiza `DragonUI/modules/collections/RealmCatalog.lua`. DragonUI valida los datos al cargarlos y usa el catálogo local al iniciar o al ejecutar `/reload`. La vista previa usa las apariencias que resuelve el cliente con sus archivos actuales. Si una apariencia no está disponible, el panel queda sin modelo.
 
 ## Licencias
 

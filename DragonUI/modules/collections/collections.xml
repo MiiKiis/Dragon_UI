@@ -4,7 +4,6 @@
     <Script file="BaseCatalog.lua"/>
     <Script file="ClientCatalog.lua"/>
     <Script file="RealmCatalog.lua"/>
-    <Script file="TextureCatalog.lua"/>
     <Script file="catalog.lua"/>
     <Script file="core.lua"/>
     <Script file="window.lua"/>
