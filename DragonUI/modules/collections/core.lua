@@ -64,7 +64,7 @@ end
 local function appendCatalog(kind, list, owned)
     local isMount = kind == "MOUNT"
     local catalog = isMount and addon.MountTraits or addon.PetSources
-    local previews = isMount and MountPreviewCatalog and MountPreviewCatalog.mounts
+    local previews = isMount and addon.MountCatalog.mounts
     local faction = (kind == "MOUNT") and UnitFactionGroup and UnitFactionGroup("player")
 
     local function append(spellID, preview)

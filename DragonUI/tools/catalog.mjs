@@ -8,8 +8,8 @@ function isID(value) {
 }
 
 function isModelPath(value) {
-    return typeof value === 'string' && value.length <= 250 &&
-        /^(Creature|Character|World)\\[^\x00-\x1f|:/]+\.(m2|mdx)$/i.test(value) &&
+    return typeof value === 'string' && Buffer.byteLength(value) <= 250 &&
+        /^(Creature|Character|World)\\[^\x00-\x1f\x7f|:/]+\.(m2|mdx)$/i.test(value) &&
         value.split('\\').every(part => part && part !== '.' && part !== '..');
 }
 
@@ -22,7 +22,7 @@ function validate(catalog) {
         if (!row || !isID(row.spellID) || ids.has(row.spellID) || typeof row.custom !== 'boolean' ||
             (row.creatureID != null && !isID(row.creatureID)) ||
             (row.displayID != null && !isID(row.displayID)) ||
-            (row.name != null && (typeof row.name !== 'string' || !row.name.trim() || row.name.length > 200 || /[\x00-\x1f|]/.test(row.name))) ||
+            (row.name != null && (typeof row.name !== 'string' || !row.name.trim() || Buffer.byteLength(row.name) > 200 || /[\x00-\x1f\x7f]/.test(row.name))) ||
             (row.model != null && !isModelPath(row.model)) ||
             (!row.creatureID && !row.displayID && !row.model)) {
             throw new Error(`Montura inválida o duplicada: ${row?.spellID}`);
@@ -130,7 +130,7 @@ async function main() {
         const response = await fetch(url, { redirect: 'error', signal: AbortSignal.timeout(15000) });
         if (!response.ok) throw new Error(`El VPS devolvió HTTP ${response.status}.`);
         const catalog = validate(await response.json());
-        await writeAtomic(join(args.addon, 'RealmCatalog.lua'), toLua(catalog, 'RealmCatalog'));
+        await writeAtomic(join(args.addon, 'modules', 'collections', 'RealmCatalog.lua'), toLua(catalog, 'RealmCatalog'));
         console.log(`Catálogo sincronizado: ${catalog.mounts.length} monturas. Ejecuta /reload en WoW.`);
         return;
     }

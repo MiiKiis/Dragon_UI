@@ -297,6 +297,17 @@ function CO.Toggle(kind)
     CO.Open(kind)
 end
 
+SLASH_DRAGONUIMOUNTS1 = "/monturas"
+SLASH_DRAGONUIMOUNTS2 = "/mountpreview"
+SlashCmdList.DRAGONUIMOUNTS = function()
+    if not CO:Enabled() then return end
+    if CO.IsShown() and CO.Kind ~= "MOUNT" then
+        CO.SelectKind("MOUNT")
+    else
+        CO.Toggle("MOUNT")
+    end
+end
+
 -- A server with ToggleCollectionsJournal ships its own window, and stock 3.3.5a has none.
 function addon.ToggleCollections(kind)
     if type(_G.ToggleCollectionsJournal) == "function" then

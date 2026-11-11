@@ -87,7 +87,7 @@ end
 local function showCreature(creatureID)
     if not model then return end
     if model._mountPreview then
-        MountPreviewCatalog.Stop(model)
+        addon.MountCatalog.Stop(model)
         model._mountPreview = nil
     end
     if not creatureID then
@@ -119,7 +119,7 @@ local function showMountPreview(preview)
     addon:ResetModelView(model)
     addon:ResetModelRotation(model, 0.5)
     uncollectedHint:Hide()
-    MountPreviewCatalog.Show(model, preview, function(loaded)
+    addon.MountCatalog.Show(model, preview, function(loaded)
         if loaded then
             addon:ApplyModelView(model)
         else
