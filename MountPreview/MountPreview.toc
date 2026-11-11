@@ -1,0 +1,12 @@
+## Interface: 30300
+## Title: MountPreview
+## Notes: Catalogo y visor de monturas para WotLK 3.3.5a
+## Version: 1.0.0
+
+BaseCatalog.lua
+ClientCatalog.lua
+RealmCatalog.lua
+TextureCatalog.lua
+Catalog.lua
+ModelView.lua
+MountPreview.lua

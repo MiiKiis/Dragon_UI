@@ -1,0 +1,7 @@
+.vscode/
+*.bak
+*.mpq
+*.MPQ
+WTF/
+Cache/
+DragonUI-backup-*/

@@ -1,0 +1,8 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="iconic.lua"/>
+    <Script file="chat_item_template.lua"/>
+    <Script file="custom_merchantframe.lua"/>
+    <Script file="Custom_Item\custom_item_class.lua"/>
+    <Script file="Custom_Item\custom_itemTemplate.lua"/>
+    <Script file="Custom_Item\custom_item_level.lua"/>
+</Ui>
